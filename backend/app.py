@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from faker import Faker
+from backend.generate_face import generate_face
 
 app = FastAPI()
 fake = Faker()
 
-@app.get("/")
+
 @app.get("/generate-profile")
 def generate_profile():
 
@@ -22,6 +23,8 @@ def generate_profile():
 @app.get("/generate-identity")
 def generate_identity():
 
+    image_path = generate_face()
+
     profile = {
         "name": fake.name(),
         "age": fake.random_int(
@@ -33,8 +36,21 @@ def generate_identity():
         "email": fake.email()
     }
 
-    return profile
+    return {
+        "profile": profile,
+        "image_path": image_path
+    }
 
+@app.get("/generate-face")
+def generate_face_api():
+
+    image_path = generate_face()
+
+    return {
+        "image_path": image_path
+    }
+
+@app.get("/")
 def home():
 
     return {
