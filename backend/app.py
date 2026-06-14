@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from faker import Faker
 from backend.generate_face import generate_face
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
@@ -15,7 +16,11 @@ app.add_middleware(
 
 fake = Faker()
 
-
+app.mount(
+    "/generated_faces",
+    StaticFiles(directory="generated_faces"),
+    name="generated_faces"
+)
 
 @app.get("/generate-profile")
 def generate_profile():

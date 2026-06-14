@@ -25,7 +25,7 @@ LATENT_DIM = 100
 
 LEARNING_RATE = 0.0002
 
-EPOCHS = 20
+EPOCHS = 100
 
 
 # Dataset
@@ -34,7 +34,7 @@ dataset = CelebADataset(
     DATASET_PATH,
     transform=transform
 )
-dataset.images = dataset.images[:10000]
+dataset.images = dataset.images[:30000]
 
 dataloader = DataLoader(
     dataset,
