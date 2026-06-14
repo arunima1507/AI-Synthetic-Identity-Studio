@@ -25,7 +25,7 @@ LATENT_DIM = 100
 
 LEARNING_RATE = 0.0002
 
-EPOCHS = 2
+EPOCHS = 20
 
 
 # Dataset
@@ -34,7 +34,7 @@ dataset = CelebADataset(
     DATASET_PATH,
     transform=transform
 )
-dataset.images = dataset.images[:1000]
+dataset.images = dataset.images[:10000]
 
 dataloader = DataLoader(
     dataset,
@@ -210,6 +210,8 @@ for epoch in range(EPOCHS):
             discriminator.state_dict(),
             f"models/discriminator_epoch_{epoch+1}.pth"
         )
+
+        print(f"Epoch {epoch+1} completed")
     
     with open("training/losses.csv", "a", newline="") as f:
 
