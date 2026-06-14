@@ -1,9 +1,20 @@
 from fastapi import FastAPI
 from faker import Faker
 from backend.generate_face import generate_face
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 fake = Faker()
+
 
 
 @app.get("/generate-profile")

@@ -2,6 +2,7 @@
 
 import torch
 import torch.nn as nn
+import csv
 from torchvision.utils import save_image
 from torch.utils.data import DataLoader
 
@@ -24,7 +25,7 @@ LATENT_DIM = 100
 
 LEARNING_RATE = 0.0002
 
-EPOCHS = 1
+EPOCHS = 2
 
 
 # Dataset
@@ -33,7 +34,7 @@ dataset = CelebADataset(
     DATASET_PATH,
     transform=transform
 )
-dataset.images = dataset.images[:2000]
+dataset.images = dataset.images[:1000]
 
 dataloader = DataLoader(
     dataset,
@@ -94,6 +95,16 @@ fixed_noise = torch.randn(
     1,
     device=device
 )
+
+with open("training/losses.csv", "w", newline="") as f:
+
+    writer = csv.writer(f)
+
+    writer.writerow([
+        "epoch",
+        "loss_d",
+        "loss_g"
+    ])
 
 for epoch in range(EPOCHS):
     
@@ -189,6 +200,26 @@ for epoch in range(EPOCHS):
             f"generated_faces/epoch_{epoch+1}.png",
             normalize=True
         )
+
+        torch.save(
+            generator.state_dict(),
+            f"models/generator_epoch_{epoch+1}.pth"
+        )
+
+        torch.save(
+            discriminator.state_dict(),
+            f"models/discriminator_epoch_{epoch+1}.pth"
+        )
+    
+    with open("training/losses.csv", "a", newline="") as f:
+
+        writer = csv.writer(f)
+
+        writer.writerow([
+            epoch + 1,
+            (loss_real + loss_fake).item(),
+            loss_g.item()
+        ])
 
 
 torch.save(

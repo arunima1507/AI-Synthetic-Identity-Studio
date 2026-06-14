@@ -1,4 +1,5 @@
 import torch
+import time
 
 from training.generator import Generator
 from torchvision.utils import save_image
@@ -29,10 +30,12 @@ def generate_face():
 
         fake_image = generator(noise)
 
+    filename = f"generated_faces/face_{int(time.time())}.png"
+
     save_image(
         fake_image,
-        "generated_faces/api_face.png",
+        filename,
         normalize=True
     )
 
-    return "generated_faces/api_face.png"
+    return filename
