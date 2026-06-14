@@ -1,13 +1,18 @@
 venv/
 
+celeba_hq_256/
+
+generated_faces/
+generated_identities/
+
+models/
+*.pth
+*.pt
+*.ckpt
+
 __pycache__/
+*.pyc
 
 .ipynb_checkpoints/
 
-celeba_hq_256/
-
-models/
-
-generated_faces/
-
-generated_identities/
+.DS_Store
