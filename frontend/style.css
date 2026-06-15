@@ -130,3 +130,49 @@ button {
 
     margin-bottom: 10px;
 }
+
+#training-gallery {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 30px;
+
+    margin-top: 30px;
+}
+
+.epoch-card {
+
+    text-align: center;
+}
+
+.epoch-card img {
+
+    width: 100%;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0px 4px 10px rgba(0,0,0,0.2);
+}
+
+#loss-graph-container {
+
+    margin-top: 40px;
+
+    text-align: center;
+}
+
+#loss-graph {
+
+    width: 80%;
+
+    max-width: 1000px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0px 4px 10px rgba(0,0,0,0.2);
+}
