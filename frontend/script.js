@@ -160,10 +160,7 @@ async function generateDataset(count) {
         generatedDataset.push(data);
     }
 
-    document.getElementById(
-        "dataset-info"
-    ).innerHTML =
-        `Dataset Size: ${count}`;
+    updateDatasetStats();
 
     alert(
         `${count} identities generated`
@@ -219,4 +216,59 @@ function downloadCSV() {
     a.click();
 
     URL.revokeObjectURL(url);
+}
+
+function updateDatasetStats() {
+
+    const count =
+        generatedDataset.length;
+
+    let totalAge = 0;
+
+    const cities =
+        new Set();
+
+    const occupations =
+        new Set();
+
+    generatedDataset.forEach(
+        identity => {
+
+            totalAge +=
+                identity.profile.age;
+
+            cities.add(
+                identity.profile.city
+            );
+
+            occupations.add(
+                identity.profile.occupation
+            );
+        }
+    );
+
+    const avgAge =
+        count > 0
+        ? (totalAge / count).toFixed(1)
+        : 0;
+
+    document.getElementById(
+        "dataset-size"
+    ).textContent =
+        `Dataset Size: ${count}`;
+
+    document.getElementById(
+        "avg-age"
+    ).textContent =
+        `Average Age: ${avgAge}`;
+
+    document.getElementById(
+        "unique-cities"
+    ).textContent =
+        `Unique Cities: ${cities.size}`;
+
+    document.getElementById(
+        "unique-occupations"
+    ).textContent =
+        `Unique Occupations: ${occupations.size}`;
 }
