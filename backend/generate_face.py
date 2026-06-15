@@ -10,7 +10,7 @@ generator = Generator()
 
 generator.load_state_dict(
     torch.load(
-        "models/generator.pth",
+        "models/generator_epoch_100.pth",
         map_location=device
     )
 )
