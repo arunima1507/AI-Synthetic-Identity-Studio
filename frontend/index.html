@@ -13,33 +13,53 @@
 
     <h1>AI Synthetic Identity Studio</h1>
 
-    <button type="button" onclick="generateIdentity()">
-        Generate Identity
-    </button>
+    <div class="action-section">
 
-    <button onclick="generateDataset(10)">
-        Generate 10 Identities
-    </button>
+        <h2>Identity Actions</h2>
 
-    <button onclick="generateDataset(50)">
-        Generate 50 Identities
-    </button>
+        <button onclick="generateIdentity()">
+            Generate Identity
+        </button>
 
-    <button onclick="generateDataset(100)">
-        Generate 100 Identities
-    </button>
+        <button onclick="downloadJSON()">
+            Download JSON
+        </button>
 
-    <button onclick="downloadCSV()">
-        Download CSV Dataset
-    </button>
+        <button onclick="downloadCard()">
+            Download Identity Card
+        </button>
 
-    <button onclick="downloadCard()">
-        Download Identity Card
-    </button>
+    </div>
 
-    <button onclick="downloadJSON()">
-        Download JSON
-    </button>
+    <div class="action-section">
+
+        <h2>Dataset Actions</h2>
+
+        <button onclick="generateDataset(10)">
+            Generate 10 Identities
+        </button>
+
+        <button onclick="generateDataset(50)">
+            Generate 50 Identities
+        </button>
+
+        <button onclick="generateDataset(100)">
+            Generate 100 Identities
+        </button>
+
+        <button onclick="downloadCSV()">
+            Download CSV Dataset
+        </button>
+
+    </div>
+
+    <div id="history-panel">
+
+            <h2>History</h2>
+
+            <ul id="history-list"></ul>
+
+    </div>
 
     <div class="container">
         <div id="dataset-info">
@@ -63,15 +83,32 @@
             </p>
 
         </div>
-        <div id="history-panel">
-
-            <h2>History</h2>
-
-            <ul id="history-list"></ul>
-
-        </div>
 
         <div id="identity-card"></div>
+
+    </div>
+
+    
+
+    <div id="ml-dashboard">
+
+        <h2>Machine Learning Dashboard</h2>
+
+        <div id="training-info">
+
+            <p><b>Architecture:</b> DCGAN</p>
+
+            <p><b>Dataset:</b> CelebA-HQ</p>
+
+            <p><b>Images Used:</b> 30000</p>
+
+            <p><b>Resolution:</b> 64 × 64</p>
+
+            <p><b>Epochs Trained:</b> 100</p>
+
+            <p><b>Training Time:</b> 18 Hours</p>
+
+        </div>
 
     </div>
 
