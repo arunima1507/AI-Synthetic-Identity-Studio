@@ -1,3 +1,7 @@
+let identityHistory = [];
+let currentIdentity = null;
+let generatedDataset = [];
+
 async function generateIdentity() {
 
     document.getElementById("identity-card").innerHTML = `
@@ -12,32 +16,11 @@ async function generateIdentity() {
         );
 
         const data = await response.json();
+        identityHistory.push(data);
 
-        document.getElementById("identity-card").innerHTML = `
-            <div class="card">
+        updateHistory();
+        showIdentity(data);
 
-                <img
-                    src="http://127.0.0.1:8000/${data.image_path}"
-                    class="face-image"
-                    alt="Generated Face"
-                >
-
-                <h2>${data.profile.name}</h2>
-
-                <p><b>Age:</b> ${data.profile.age}</p>
-
-                <p><b>Occupation:</b> ${data.profile.occupation}</p>
-
-                <p><b>City:</b> ${data.profile.city}</p>
-
-                <p><b>Email:</b> ${data.profile.email}</p>
-
-                <button onclick="downloadCard()">
-                    Download Identity Card
-                </button>
-
-            </div>
-        `;
     }
     catch(error) {
 
@@ -70,4 +53,170 @@ function downloadCard() {
     printWindow.document.close();
 
     printWindow.print();
+}
+
+function updateHistory() {
+
+    const list = document.getElementById(
+        "history-list"
+    );
+
+    list.innerHTML = "";
+
+    identityHistory.forEach(
+        (identity, index) => {
+
+            const item =
+                document.createElement("li");
+
+            item.textContent =
+                identity.profile.name;
+
+            item.onclick = () => {
+
+                showIdentity(identity);
+            };
+
+            list.appendChild(item);
+        }
+    );
+}
+
+function showIdentity(data) {
+
+    currentIdentity = data;
+
+    document.getElementById("identity-card").innerHTML = `
+        <div class="card">
+
+            <img
+                src="http://127.0.0.1:8000/${data.image_path}"
+                class="face-image"
+                alt="Generated Face"
+            >
+
+            <h2>${data.profile.name}</h2>
+
+            <p><b>Age:</b> ${data.profile.age}</p>
+
+            <p><b>Occupation:</b> ${data.profile.occupation}</p>
+
+            <p><b>City:</b> ${data.profile.city}</p>
+
+            <p><b>Email:</b> ${data.profile.email}</p>
+
+            <button onclick="downloadCard()">
+                Download Identity Card
+            </button>
+
+        </div>
+    `;
+}
+
+function downloadJSON() {
+
+    const dataStr =
+        JSON.stringify(
+            currentIdentity,
+            null,
+            4
+        );
+
+    const blob =
+        new Blob(
+            [dataStr],
+            {
+                type: "application/json"
+            }
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const a =
+        document.createElement("a");
+
+    a.href = url;
+
+    a.download = "identity.json";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+
+async function generateDataset(count) {
+
+    generatedDataset = [];
+
+    for(let i = 0; i < count; i++) {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/generate-identity"
+        );
+
+        const data = await response.json();
+
+        generatedDataset.push(data);
+    }
+
+    document.getElementById(
+        "dataset-info"
+    ).innerHTML =
+        `Dataset Size: ${count}`;
+
+    alert(
+        `${count} identities generated`
+    );
+}
+
+function downloadCSV() {
+
+    if(generatedDataset.length === 0) {
+
+        alert(
+            "Generate a dataset first"
+        );
+
+        return;
+    }
+
+    let csv =
+        "name,age,occupation,city,email,image_path\n";
+
+    generatedDataset.forEach(
+        identity => {
+
+            csv +=
+                `"${identity.profile.name}",` +
+                `"${identity.profile.age}",` +
+                `"${identity.profile.occupation}",` +
+                `"${identity.profile.city}",` +
+                `"${identity.profile.email}",` +
+                `"${identity.image_path}"\n`;
+        }
+    );
+
+    const blob =
+        new Blob(
+            [csv],
+            {
+                type: "text/csv"
+            }
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const a =
+        document.createElement("a");
+
+    a.href = url;
+
+    a.download =
+        "synthetic_dataset.csv";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
 }

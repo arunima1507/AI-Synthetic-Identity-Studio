@@ -48,3 +48,47 @@ button {
 
     margin-bottom: 15px;
 }
+
+.container {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    align-items: flex-start;
+}
+
+#history-panel {
+
+    width: 250px;
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+#history-list {
+
+    list-style: none;
+
+    padding: 0;
+}
+
+#history-list li {
+
+    padding: 10px;
+
+    margin-bottom: 8px;
+
+    background: #f0f0f0;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}

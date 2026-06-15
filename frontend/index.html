@@ -17,11 +17,48 @@
         Generate Identity
     </button>
 
+    <button onclick="generateDataset(10)">
+        Generate 10 Identities
+    </button>
+
+    <button onclick="generateDataset(50)">
+        Generate 50 Identities
+    </button>
+
+    <button onclick="generateDataset(100)">
+        Generate 100 Identities
+    </button>
+
+    <button onclick="downloadCSV()">
+        Download CSV Dataset
+    </button>
+
     <button onclick="downloadCard()">
         Download Identity Card
     </button>
 
-    <div id="identity-card"></div>
+    <button onclick="downloadJSON()">
+        Download JSON
+    </button>
+
+    <div class="container">
+        <div id="dataset-info">
+            Dataset Size: 0
+        </div>
+
+        <div id="history-panel">
+
+            <h2>History</h2>
+
+            <ul id="history-list"></ul>
+
+        </div>
+
+        <div id="identity-card"></div>
+
+    </div>
+
+    
 
     <script src="script.js"></script>
 
