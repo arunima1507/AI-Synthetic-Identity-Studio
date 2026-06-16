@@ -144,6 +144,17 @@ for visual analysis of model performance.
 
 ---
 
+## Key Results
+
+- Successfully trained a DCGAN on the CelebA-HQ dataset
+- Generated realistic synthetic face images
+- Created complete synthetic identities using Faker
+- Built a FastAPI backend for identity generation
+- Developed an interactive analytics dashboard
+- Implemented dataset export in JSON and CSV formats
+- Visualized GAN training progression and loss curves
+---
+
 ## Screenshots
 
 ### Homepage
@@ -154,7 +165,7 @@ for visual analysis of model performance.
 
 ![Training Evolution](assets/training.png)
 
-### Generated Identites
+### Generated Identities
 
 ![Generated Identities Sample 1](assets/generatedIdentity1.png)
 ![Generated Identities Sample 2](assets/generatedIdentity2.png)
@@ -235,7 +246,7 @@ models/
 ### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/arunima1507/AI-Synthetic-Identity-Studio.git
 cd AI-Synthetic-Identity-Studio
 ```
 
@@ -274,22 +285,14 @@ frontend/index.html
 
 ## Future Improvements
 
-- Higher resolution GAN training
-- StyleGAN integration
-- Cloud deployment
-- User authentication
-- Synthetic identity quality scoring
-- Real-time training monitoring
-
----
-
-## Future Improvements
-
 - StyleGAN2 Integration
-- Higher Resolution Generation
-- Attribute-Controlled Face Generation
+- Higher Resolution Face Generation
+- Attribute-Controlled Face Synthesis
 - Docker Deployment
 - Cloud Hosting
+- User Authentication
+- Synthetic Identity Quality Scoring
+- Real-Time Training Monitoring
 
 ---
 
@@ -298,3 +301,6 @@ frontend/index.html
 Arunima
 
 AI / Machine Learning Portfolio Project
+
+GitHub:
+https://github.com/arunima1507
