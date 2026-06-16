@@ -95,6 +95,30 @@ button {
     list-style: none;
 
     padding: 0;
+
+    justify-content: center;
+}
+
+#history-list li {
+
+    background: #e8f0ff;
+
+    padding: 10px 15px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    font-weight: bold;
+}
+
+#history-list li:hover {
+
+    transform: scale(1.05);
+
+    background: #d6e5ff;
 }
 
 #ml-dashboard {
@@ -175,4 +199,51 @@ button {
 
     box-shadow:
         0px 4px 10px rgba(0,0,0,0.2);
+}
+
+#project-overview {
+
+    width: 80%;
+
+    margin: 20px auto;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0px 4px 10px rgba(0,0,0,0.2);
+
+    text-align: center;
+}
+
+#project-overview p {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    line-height: 1.6;
+}
+
+#feature-tags {
+
+    margin-top: 20px;
+}
+
+.tag {
+
+    display: inline-block;
+
+    padding: 10px 15px;
+
+    margin: 5px;
+
+    border-radius: 20px;
+
+    background: #e8f0ff;
+
+    font-weight: bold;
 }
