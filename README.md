@@ -169,8 +169,8 @@ for visual analysis of model performance.
 
 ## Architecture
 
-![Architecture](assets/architecture.png)
-
+![Architecture](assets/pipeline1.png)
+![Architecture](assets/pipeline2.png)
 ---
 
 ## Technology Stack
