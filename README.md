@@ -18,15 +18,15 @@ No real personal information is used or stored.
 
 ## Problem Statement
 
-Access to realistic human data is often limited by privacy regulations, ethical concerns, and legal restrictions.
+Real-world identity datasets contain sensitive personal information and are often restricted due to privacy regulations.
 
-This project addresses that challenge by generating synthetic identities consisting of:
+This project generates realistic synthetic identities that can be safely used for:
 
-- AI-generated face images
-- Synthetic names
-- Synthetic demographic information
-
-allowing developers and researchers to work with realistic-looking data without exposing real individuals.
+- Software Testing
+- UI/UX Prototyping
+- Machine Learning Experiments
+- Educational Demonstrations
+- Privacy-Preserving Research
 
 ---
 
@@ -38,24 +38,20 @@ allowing developers and researchers to work with realistic-looking data without 
 - Trained on the CelebA-HQ dataset
 - Generates unique synthetic human faces
 
-### Identity Generation
+### Identity Synthesis
 
-Each identity includes:
-
+- Faker-based demographic generation
 - Name
 - Age
 - Occupation
 - City
-- Email Address
-- AI-generated Face
+- Email
 
 ### Dataset Generation
 
-Generate:
-
-- 10 identities
-- 50 identities
-- 100 identities
+- Generate 10 / 50 / 100 identities
+- Dataset statistics dashboard
+- CSV export
 
 in a single click.
 
@@ -70,15 +66,13 @@ in a single click.
 - Stores previously generated identities
 - Allows reloading older identities
 
-### Machine Learning Dashboard
 
-Displays:
+### Training Analytics
 
-- Model Architecture
-- Dataset Information
-- Training Duration
-- Training Evolution Gallery
-- GAN Loss Graph
+- GAN loss visualization
+- Epoch evolution gallery
+- Model performance dashboard
+- Training pipeline visualization
 
 ---
 
@@ -112,15 +106,34 @@ Components:
 
 ---
 
+## System Architecture
+
+CelebA-HQ Dataset
+↓
+DCGAN Training
+↓
+Synthetic Face Generation
+↓
+Faker Profile Generation
+↓
+Synthetic Identity Creation
+↓
+CSV / JSON Export
+
+---
+
 ## Training Results
 
-The model was trained for 100 epochs.
+The model progressively learns facial structure and visual realism across training epochs.
 
-Training progression demonstrates:
+Training progression:
 
-- Early epochs: random noise
-- Mid epochs: rough facial structures
-- Late epochs: realistic human faces
+- Epoch 1 → Noise
+- Epoch 20 → Basic facial structure
+- Epoch 40 → Recognizable faces
+- Epoch 60 → Improved realism
+- Epoch 80 → Stable face generation
+- Epoch 100 → Final model
 
 The application includes:
 
@@ -128,6 +141,35 @@ The application includes:
 - Generator vs Discriminator Loss Graph
 
 for visual analysis of model performance.
+
+---
+
+## Screenshots
+
+### Homepage
+
+![Homepage](assets/homepage.png)
+
+### Training Evolution
+
+![Training Evolution](assets/training.png)
+
+### Generated Identites
+
+![Generated Identities Sample 1](assets/generatedIdentity1.png)
+![Generated Identities Sample 2](assets/generatedIdentity2.png)
+
+### Statistic after generating 50 Datasets
+
+![Statistic on 50 Datasets](assets/stats1.png)
+
+### GAN Loss Graph
+
+![Loss Graph](assets/loss_graph.png)
+
+## Architecture
+
+![Architecture](assets/architecture.png)
 
 ---
 
@@ -203,23 +245,21 @@ cd AI-Synthetic-Identity-Studio
 pip install -r requirements.txt
 ```
 
-### Start Backend
+## Running Locally
+
+### Backend
 
 ```bash
 uvicorn backend.app:app --reload
 ```
 
-### Open Frontend
+### Frontend
 
 Open:
 
 ```text
 frontend/index.html
 ```
-
-in your browser.
-
----
 
 ## Sample Workflow
 
@@ -240,6 +280,16 @@ in your browser.
 - User authentication
 - Synthetic identity quality scoring
 - Real-time training monitoring
+
+---
+
+## Future Improvements
+
+- StyleGAN2 Integration
+- Higher Resolution Generation
+- Attribute-Controlled Face Generation
+- Docker Deployment
+- Cloud Hosting
 
 ---
 

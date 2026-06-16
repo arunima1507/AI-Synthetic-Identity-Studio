@@ -4,7 +4,10 @@ from backend.generate_face import generate_face
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-app = FastAPI()
+app = FastAPI(title="AI Synthetic Identity Studio API",
+    description="Synthetic Identity Generation using DCGAN and FastAPI",
+    version="1.0.0"
+)
 
 app.add_middleware(
     CORSMiddleware,
