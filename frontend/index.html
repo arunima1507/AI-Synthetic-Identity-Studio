@@ -118,7 +118,10 @@
 
         </div>
 
-        <div id="identity-card"></div>
+        <div id="identity-card-container">
+            <h2>Current Synthetic Identity</h2>
+            <div id="identity-card"></div>
+        </div>
 
     </div>
 
@@ -128,23 +131,58 @@
 
         <h2>Machine Learning Dashboard</h2>
 
-        <div id="training-info">
+        <div class="model-tags">
 
-            <p><b>Architecture:</b> DCGAN</p>
-
-            <p><b>Dataset:</b> CelebA-HQ</p>
-
-            <p><b>Images Used:</b> 30000</p>
-
-            <p><b>Resolution:</b> 64 × 64</p>
-
-            <p><b>Epochs Trained:</b> 100</p>
-
-            <p><b>Training Time:</b> 18 Hours</p>
+            <span class="tag">DCGAN</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">CelebA-HQ</span>
+            <span class="tag">100 Epochs</span>
 
         </div>
 
-        <h3>Training Evolution</h3>
+        <div id="performance-summary">
+
+            <h3>Model Performance Summary</h3>
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <h4>Training Dataset</h4>
+                    <p>30,000 CelebA-HQ images</p>
+                </div>
+
+                <div class="summary-card">
+                    <h4>Architecture</h4>
+                    <p>DCGAN</p>
+                </div>
+
+                <div class="summary-card">
+                    <h4>Training Duration</h4>
+                    <p>100 Epochs (~18 Hours)</p>
+                </div>
+
+                <div class="summary-card">
+                    <h4>Output Resolution</h4>
+                    <p>64 × 64 RGB</p>
+                </div>
+
+                <div class="summary-card">
+                    <h4>Generator Quality</h4>
+                    <p>Progressively improved realism across epochs</p>
+                </div>
+
+                <div class="summary-card">
+                    <h4>Privacy Benefit</h4>
+                    <p>No real identities exposed</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="training-evolution">
+            <h2>Training Evolution</h2>
+        </div>
 
         <div id="training-gallery">
 
@@ -197,8 +235,9 @@
             </div>
 
         </div>
+        
 
-        <h3>Training Loss Graph</h3>
+        <h2>Training Loss Graph</h2>
 
         <div id="loss-graph-container">
 
@@ -210,12 +249,69 @@
 
         </div>
 
-    </div>
+        <div id="project-pipeline">
 
-    
+            <h3>Project Pipeline</h3>
+
+            <div class="pipeline-vertical">
+
+                <div class="pipeline-step">
+                    <h4>CelebA-HQ Dataset</h4>
+                    <p>30,000 Real Face Images</p>
+                </div>
+
+                <div class="pipeline-arrow">↓</div>
+
+                <div class="pipeline-step">
+                    <h4>DCGAN Training</h4>
+                    <p>100 Epochs</p>
+                </div>
+
+                <div class="pipeline-arrow">↓</div>
+
+                <div class="pipeline-step">
+                    <h4>Face Generator</h4>
+                    <p>Creates Synthetic Faces</p>
+                </div>
+
+                <div class="pipeline-arrow">↓</div>
+
+                <div class="pipeline-step">
+                    <h4>Profile Generator</h4>
+                    <p>Faker-Based Demographics</p>
+                </div>
+
+                <div class="pipeline-arrow">↓</div>
+
+                <div class="pipeline-step">
+                    <h4>Synthetic Identity</h4>
+                    <p>Face + Profile</p>
+                </div>
+
+                <div class="pipeline-arrow">↓</div>
+
+                <div class="pipeline-step">
+                    <h4>Export</h4>
+                    <p>CSV / JSON</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 
 </body>
+
+<footer>
+
+    <p>
+        AI Synthetic Identity Studio |
+        DCGAN + FastAPI + PyTorch
+    </p>
+
+</footer>
 
 </html>

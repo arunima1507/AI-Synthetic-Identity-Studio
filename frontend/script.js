@@ -87,27 +87,41 @@ function showIdentity(data) {
     currentIdentity = data;
 
     document.getElementById("identity-card").innerHTML = `
-        <div class="card">
+        <div class="identity-content">
 
+        <div>
             <img
                 src="http://127.0.0.1:8000/${data.image_path}"
                 class="face-image"
                 alt="Generated Face"
             >
+            
+            <p class="identity-label">
+                AI Generated Face
+            </p>
+        </div>            
 
-            <h2>${data.profile.name}</h2>
+            <div class="identity-details">
+            
+                <h2>${data.profile.name}</h2>
 
-            <p><b>Age:</b> ${data.profile.age}</p>
+                <p><b>Age:</b> ${data.profile.age}</p>
 
-            <p><b>Occupation:</b> ${data.profile.occupation}</p>
+                <p><b>Occupation:</b> ${data.profile.occupation}</p>
 
-            <p><b>City:</b> ${data.profile.city}</p>
+                <p><b>City:</b> ${data.profile.city}</p>
 
-            <p><b>Email:</b> ${data.profile.email}</p>
+                <p><b>Email:</b> ${data.profile.email}</p>
 
-            <button onclick="downloadCard()">
-                Download Identity Card
-            </button>
+                <button onclick="downloadIdentityCard()">
+                    Download Identity Card
+                </button>
+
+
+
+            </div>
+
+            
 
         </div>
     `;
